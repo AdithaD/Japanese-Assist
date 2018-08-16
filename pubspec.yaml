@@ -4,6 +4,7 @@ description: An app that helps with learning Japanese
 dependencies:
   flutter:
     sdk: flutter
+  xml: ^3.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
