@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'dictionary_page.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
 
-  static final NAME = "Japanese Assist";
+  static const NAME = "Japanese Assist";
 
   // This widget is the root of your application.
   @override
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
             title: new Text(MyApp.NAME)
         ),
-        body: new HomePage(),
+        body: new DictionaryPage(),
         bottomNavigationBar: BottomNavigationBar(items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
