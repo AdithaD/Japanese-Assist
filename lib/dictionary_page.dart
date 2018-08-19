@@ -178,33 +178,36 @@ class DictionaryPageState extends State<DictionaryPage>{
         if (snapshot.hasError) print(snapshot.error);
 
         if(snapshot.hasData){
-          return DictionaryEntryList(entries: snapshot.data,);
-          /*return Container(
-            constraints: BoxConstraints.expand(),
-            color: Colors.red,
-            child: Column(
-              children: <Widget>[
-                Container(
-                  color: Colors.purple,
+          return Column(
+            children: <Widget>[
+              Container(
+                color: Theme.of(context).highlightColor,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
                   child: Row(
-                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Icon(Icons.search),
-                      Container(child: TextField(), constraints: BoxConstraints.expand(),),
+                      Expanded(child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TextField(),
+                      )),
                       RaisedButton(onPressed: () {
 
-                      }, child: Text("Search"),)
+                      },
+                      child: Text("Search"),
+                      color: Theme.of(context).accentColor,
+                      textColor: Colors.white,)
                     ],
                   ),
                 ),
-                Container(
-                    height: 100.0,
-                    color: Colors.grey,
-                    child: DictionaryEntryList(entries: snapshot.data,)
-                )
-              ],
-            ),
-          );*/
+              ),
+              Expanded(
+                  child: DictionaryEntryList(entries: snapshot.data),
+              ),
+            ],
+          );
+
         }else {
           return Center(child: CircularProgressIndicator());
         }
