@@ -3,17 +3,18 @@ import 'package:flutter/foundation.dart';
 import 'package:xml/xml.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
+import 'search_page.dart';
 
 Future<List<DictionaryEntry>> fetchDictionaryEntriesIntoDOM() async{
   final String dictionaryXmlString = await rootBundle.loadString("assets/xml/JMdict_e.xml");
 
 
 
-  //return compute(parseDictionaryEntriesFromDOM, prepareXmlString(dictionaryXmlString, 0, 10));
-  return parseDictionaryEntriesFromDOM(prepareXmlString(dictionaryXmlString, 20000, 200));
+  return compute(parseDictionaryEntriesFromDOM, prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));
+  //return parseDictionaryEntriesFromDOM(prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));
 }
 
-String prepareXmlString(String dictionaryXmlString, int startingIndex, int amountOfEntries){
+String prepareXmlStringForEntries(String dictionaryXmlString, int startingIndex, int amountOfEntries){
   StringBuffer result = new StringBuffer("<JMDict>");
 
   int currentIndex = startingIndex;
@@ -165,6 +166,8 @@ class DictionaryPageState extends State<DictionaryPage>{
           </JMDict>
         ''';*/
 
+  TextEditingController searchFieldController = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
@@ -190,11 +193,9 @@ class DictionaryPageState extends State<DictionaryPage>{
                       Icon(Icons.search),
                       Expanded(child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: TextField(),
+                        child: TextField(controller: searchFieldController,),
                       )),
-                      RaisedButton(onPressed: () {
-
-                      },
+                      RaisedButton(onPressed: () => _startSearch(searchFieldController.text),
                       child: Text("Search"),
                       color: Theme.of(context).accentColor,
                       textColor: Colors.white,)
@@ -215,6 +216,15 @@ class DictionaryPageState extends State<DictionaryPage>{
     );
   }
 
+  _startSearch(String searchTerm){
+    if(searchFieldController.text != "") {
+      _createSearchRoute(searchTerm);
+    }
+  }
+
+  _createSearchRoute(String searchTerm){
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) => DictionarySearchPage(searchTerm: searchTerm)));
+  }
 
 }
 
@@ -257,3 +267,7 @@ class MutableDictionaryEntry{
   String japaneseWord;
   String englishTranslation;
 }
+
+
+
+
