@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:japanese_assist/dictionary/dictionary_entry.dart';
+import 'package:japanese_assist/dictionary/dictionary_entry_list.dart';
 import 'package:xml/xml.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
-import 'main.dart';
-import 'dictionary_page.dart';
+import 'package:japanese_assist/main.dart';
 
 Future<List<DictionaryEntry>> fetchSearchEntriesIntoDOM(
     String searchTerm, int amount) async {

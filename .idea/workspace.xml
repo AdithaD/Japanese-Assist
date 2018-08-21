@@ -5,13 +5,14 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13659d8b-06a4-4f77-bb02-14ddb12a440d" name="Default" comment="Added semi-functioning search bar&#10;Added search results route">
+    <list default="true" id="13659d8b-06a4-4f77-bb02-14ddb12a440d" name="Default" comment="Search bar works.&#10;Validated search bar data entry.&#10;Added display for no results search">
+      <change afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_entry_list_tile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/japanese_assist.iml" beforeDir="false" afterPath="$PROJECT_DIR$/japanese_assist.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/japanese_assist_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/japanese_assist_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dictionary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dictionary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/search_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/search_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/search_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/search_page.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -41,60 +42,105 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dart" value="1851" />
+          <entry key="dart" value="1869" />
+          <entry key="txt" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Dart" value="1851" />
+          <entry key="Dart" value="1869" />
+          <entry key="PLAIN_TEXT" value="110" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="dart" value="7" />
+          <entry key="dart" value="12" />
+          <entry key="java" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Dart" value="7" />
+          <entry key="Dart" value="12" />
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.delete.local" value="1" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/main.dart">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/dictionary/search_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="299">
+              <caret line="90" column="51" selection-start-line="90" selection-start-column="51" selection-end-line="90" selection-end-column="51" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#334#762#0" />
+                <element signature="e#824#2721#0" />
+                <element signature="n#!!block;n#DictionarySearchPage#0" />
+                <element signature="n#!!block;n#SearchQuery#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/dictionary_page.dart">
+        <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_page.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
+            <state relative-caret-position="483">
+              <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#324#662#0" />
+                <element signature="e#771#1328#0" />
+                <element signature="e#1415#1713#0" />
+                <element signature="n#!!block;n#DictionaryPage#0" />
+                <element signature="n#!!block;n#DictionaryPageState#0" />
+                <element signature="e#1977#2005#0" />
+                <element signature="e#2056#3628#0" />
                 <element signature="n#!!block;n#DictionaryEntry#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/search_page.dart">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list_tile.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="193" column="68" selection-start-line="193" selection-start-column="68" selection-end-line="193" selection-end-column="68" />
+            <state relative-caret-position="115">
+              <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="65" lean-forward="true" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,9 +183,15 @@
         <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/test.dart" />
         <option value="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/lib/dictionary_page.dart" />
-        <option value="$PROJECT_DIR$/lib/search_page.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
+        <option value="$PROJECT_DIR$/lib/search_page.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary_page.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/search_page.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/DictionaryEntryInfoDialog.java" />
+        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_page.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_entry_widget.dart" />
       </list>
     </option>
   </component>
@@ -163,13 +215,34 @@
       <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="AndroidView" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="japanese_assist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="japanese_assist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="japanese_assist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="japanese_assist" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="japanese_assist" type="b2602c69:ProjectViewProjectNode" />
+              <item name="japanese_assist" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="dictionary" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534839839984" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534841305231" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -177,8 +250,13 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Personal\Home\Hobbies\Programming\JapaneseAssist\japanese_assist\lib\dictionary" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -284,7 +362,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534732632876</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Search bar works.&#10;Validated search bar data entry.&#10;Added display for no results search">
+      <created>1534839983583</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1534839983583</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -298,8 +383,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.24966443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24934895" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -325,7 +411,7 @@
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Flutter Inspector" order="3" visible="true" weight="0.3294271" />
+      <window_info anchor="right" id="Flutter Inspector" order="3" weight="0.3294271" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" weight="0.3295302" />
       <window_info anchor="right" id="Flutter Outline" order="6" />
@@ -369,7 +455,8 @@
     <MESSAGE value="Add dictionary functionality.&#10;It can read from JMdict_e.xml file" />
     <MESSAGE value="Added non functional search bar" />
     <MESSAGE value="Added semi-functioning search bar&#10;Added search results route" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added semi-functioning search bar&#10;Added search results route" />
+    <MESSAGE value="Search bar works.&#10;Validated search bar data entry.&#10;Added display for no results search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search bar works.&#10;Validated search bar data entry.&#10;Added display for no results search" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -509,31 +596,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary_page.dart">
+    <entry file="file://$PROJECT_DIR$/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
+        <state relative-caret-position="391">
+          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/search_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="90" column="51" selection-start-line="90" selection-start-column="51" selection-end-line="90" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#334#762#0" />
+            <element signature="e#824#2721#0" />
+            <element signature="n#!!block;n#DictionarySearchPage#0" />
+            <element signature="n#!!block;n#SearchQuery#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/DictionaryEntryInfoDialog.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="65" lean-forward="true" selection-start-line="2" selection-start-column="65" selection-end-line="2" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_page.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="168" column="1" lean-forward="true" selection-start-line="168" selection-start-column="1" selection-end-line="168" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#324#662#0" />
+            <element signature="e#771#1328#0" />
+            <element signature="e#1415#1713#0" />
+            <element signature="n#!!block;n#DictionaryPage#0" />
+            <element signature="n#!!block;n#DictionaryPageState#0" />
+            <element signature="e#1977#2005#0" />
+            <element signature="e#2056#3628#0" />
             <element signature="n#!!block;n#DictionaryEntry#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/search_page.dart">
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list_tile.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="193" column="68" selection-start-line="193" selection-start-column="68" selection-end-line="193" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="115">
+          <caret line="5" column="30" lean-forward="true" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

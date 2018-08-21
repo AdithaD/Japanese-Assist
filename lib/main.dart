@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dictionary_page.dart';
+import 'package:japanese_assist/dictionary/dictionary_page.dart';
 
 void main() => runApp(new MyApp());
 
