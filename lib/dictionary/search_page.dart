@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:japanese_assist/dictionary/dictionary_entry.dart';
 import 'package:japanese_assist/dictionary/dictionary_entry_list.dart';
 import 'package:xml/xml.dart';
@@ -9,19 +8,19 @@ import 'package:japanese_assist/main.dart';
 
 Future<List<DictionaryEntry>> fetchSearchEntriesIntoDOM(
     String searchTerm, int amount) async {
-  return compute(
+  /*return compute(
       createSearchEntries,
       SearchQuery(
           searchTerm: searchTerm,
           dictionaryXmlString:
               await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
-          amount: amount));
+          amount: amount));*/
 
-  /*return createSearchEntries(SearchQuery(
+  return createSearchEntries(SearchQuery(
       searchTerm: searchTerm,
       dictionaryXmlString:
       await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
-      amount: amount));*/
+      amount: amount));
 }
 List<DictionaryEntry> createSearchEntries(SearchQuery query) {
   final String regex = r"(?:^|\W)" + query.searchTerm + r"(?:$|\W)";
@@ -51,7 +50,7 @@ List<DictionaryEntry> createSearchEntries(SearchQuery query) {
 
         XmlElement entryElement = parse(xmlEntry).rootElement;
 
-        bool inJapaneseWord;
+        bool inJapaneseWord = false;
         if (entryElement.findAllElements("keb").length != 0) {
           inJapaneseWord = entryElement
               .findAllElements("keb")
@@ -65,7 +64,7 @@ List<DictionaryEntry> createSearchEntries(SearchQuery query) {
               .text
               .contains(query.searchTerm);
         }
-        bool inEnglishTranslation;
+        bool inEnglishTranslation = false;
 
         for (var englishTranslation in entryElement.findAllElements("gloss")) {
           if (englishTranslation.text.contains(query.searchTerm)) {
@@ -110,7 +109,7 @@ class DictionarySearchPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.error, size: 100.0,),
+                        Icon(Icons.error, size: 100.0, color: Theme.of(context).primaryColor,),
                         Text(
                           "We couldn't find anything for that search! Try again",
                           textAlign: TextAlign.center,

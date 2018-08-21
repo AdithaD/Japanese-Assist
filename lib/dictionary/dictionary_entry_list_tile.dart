@@ -11,7 +11,7 @@ class DictionaryEntryListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: Text(entry.getJapaneseWord()),
+        title: Text(entry.getPreferredJapaneseWord()),
         subtitle: Text(entry.englishTranslations.first),
         onTap: () {
           showDialog(

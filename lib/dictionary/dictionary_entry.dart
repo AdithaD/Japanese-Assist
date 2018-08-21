@@ -3,6 +3,7 @@ import 'package:xml/xml.dart';
 class DictionaryEntry {
   final String kanjiWord;
   final String hiraganaWord;
+
   final List<String> englishTranslations;
 
   DictionaryEntry(
@@ -29,7 +30,7 @@ class DictionaryEntry {
     );
   }
 
-  String getJapaneseWord() {
+  String getPreferredJapaneseWord() {
     if (kanjiWord == null || kanjiWord == "") {
       return hiraganaWord;
     } else {

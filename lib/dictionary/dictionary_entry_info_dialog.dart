@@ -12,21 +12,53 @@ class DictionaryEntryInfoDialog extends StatelessWidget {
     return SimpleDialog(
       contentPadding: EdgeInsets.all(8.0),
       children: <Widget>[
-        Align(
-            alignment: Alignment.center,
-            child: Text(
-              entry.getJapaneseWord(),
-              style: Theme.of(context).textTheme.headline,
-            )),
+        _createJapaneseWordDisplayWidget(context),
         SizedBox(
           height: 16.0,
         ),
-        _getTranslationsWidget()
+        _createTranslationsWidget()
       ],
     );
   }
 
-  Widget _getTranslationsWidget() {
+  Widget _createJapaneseWordDisplayWidget(BuildContext context){
+
+    List<Widget> japaneseWordsToDisplay = new List<Widget>();
+
+    if (entry.kanjiWord == null || entry.kanjiWord == "") {
+      japaneseWordsToDisplay.add( Align(
+          alignment: Alignment.center,
+          child: Text(
+            entry.hiraganaWord,
+            style: Theme.of(context).textTheme.headline,
+          )
+      ));
+    } else {
+      japaneseWordsToDisplay.add( Align(
+          alignment: Alignment.center,
+          child: Text(
+            entry.kanjiWord,
+            style: Theme.of(context).textTheme.headline,
+          )
+      ));
+      japaneseWordsToDisplay.add(Align(
+          alignment: Alignment.center,
+          child: Text(
+            entry.hiraganaWord,
+            style: Theme.of(context).textTheme.subhead,
+          )
+      ));
+    }
+
+    return Container(
+      color: Theme.of(context).primaryColorLight,
+      child: Column(
+        children: japaneseWordsToDisplay
+      ),
+    );
+  }
+
+  Widget _createTranslationsWidget() {
     List<Widget> textWidgets = new List<Widget>();
 
     for (var i = 0; i < entry.englishTranslations.length; i++) {
