@@ -9,16 +9,19 @@ class DictionaryPage extends StatefulWidget {
 }
 
 class DictionaryPageState extends State<DictionaryPage> {
+
+  GlobalKey<DictionaryWidgetState> dictionaryKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: new Text(MyApp.NAME),
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.search), onPressed: _displaySearchDialog)
+          IconButton(icon: Icon(Icons.search), onPressed: _displaySearchDialog),
+          IconButton(icon: Icon(Icons.repeat), onPressed: _refreshEntries,)
         ],
       ),
-      body: new DictionaryWidget(),
+      body: DictionaryWidget(key: dictionaryKey,),
     );
   }
 
@@ -29,6 +32,10 @@ class DictionaryPageState extends State<DictionaryPage> {
     if (result.isNotEmpty) {
       _createSearchRoute(result);
     }
+  }
+  
+  void _refreshEntries(){
+    dictionaryKey.currentState.setState((){});
   }
 
   _createSearchRoute(String searchTerm) {

@@ -85,29 +85,32 @@ List<DictionaryEntry> parseDictionaryEntriesFromDOM(
 }
 
 class DictionaryWidget extends StatefulWidget {
+
+  const DictionaryWidget({Key key}):super(key: key);
+
   createState() => new DictionaryWidgetState();
 }
 
 class DictionaryWidgetState extends State<DictionaryWidget> {
 
+  List<DictionaryEntry> entries;
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<DictionaryEntry>>(
-      future: fetchDictionaryEntriesIntoDOM(),
-      builder: (context, snapshot) {
-        if (snapshot.hasError) print(snapshot.error);
 
-        if (snapshot.hasData) {
-          return DictionaryEntryList(entries: snapshot.data);
-        } else {
-          return Center(child: CircularProgressIndicator());
+    return FutureBuilder<List<DictionaryEntry>>(
+      future: fetchDictionaryEntriesIntoDOM().then((onValue) {
+        entries = onValue;
+      }),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done){
+          return DictionaryEntryList(entries: entries,);
+        }else{
+          return Center(child: CircularProgressIndicator(),);
         }
       },
     );
   }
-
-
 }
 
 
