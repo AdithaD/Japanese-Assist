@@ -14,21 +14,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: new ThemeData(
         primarySwatch: Colors.red,
+        buttonColor: Colors.redAccent,
         canvasColor: Colors.white,
         cardColor: Colors.white,
       ),
-      home: new Scaffold(
-        appBar: AppBar(title: new Text(MyApp.NAME)),
-        body: new DictionaryPage(),
-        bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.book), title: Text("Dictionary")),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.content_copy), title: Text("Flashcards"))
-          ],
-        ),
-      ),
+      home: DictionaryPage(),
     );
   }
 }
