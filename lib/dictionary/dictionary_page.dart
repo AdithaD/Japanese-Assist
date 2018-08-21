@@ -7,13 +7,14 @@ import 'package:xml/xml.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
 import 'package:japanese_assist/dictionary/search_page.dart';
+import 'dart:math';
 
 Future<List<DictionaryEntry>> fetchDictionaryEntriesIntoDOM() async {
   final String dictionaryXmlString =
       await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH);
 
   return compute(parseDictionaryEntriesFromDOM,
-      prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));
+      prepareXmlStringForRandomEntries(dictionaryXmlString, 50));
   /*return parseDictionaryEntriesFromDOM(
       prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));*/
 }
@@ -45,10 +46,35 @@ String prepareXmlStringForEntries(
   return result.toString();
 }
 
+String prepareXmlStringForRandomEntries(String dictionaryXmlString, int amountOfEntries){
+  StringBuffer result = new StringBuffer("<JMDict>");
+  Random rng = new Random();
+
+  int currentEntry = 0;
+  while (currentEntry < amountOfEntries) {
+    int currentIndex =  rng.nextInt(dictionaryXmlString.length);
+
+    int start = dictionaryXmlString.lastIndexOf("<entry>", currentIndex);
+    int end = dictionaryXmlString.indexOf("</entry>", currentIndex);
+
+    if (start != -1 && end != - 1) {
+      if (end > start) {
+        result
+            .write(dictionaryXmlString.substring(start, end + "</entry>".length));
+        currentEntry++;
+      }
+    }
+  }
+
+  result.write("</JMDict>");
+
+  return result.toString();
+}
+
 List<DictionaryEntry> parseDictionaryEntriesFromDOM(
     String dictionaryXmlString) {
   final parsedDoc = parse(dictionaryXmlString);
-  List<XmlNode> elements = List<XmlNode>();
+  List<XmlElement> elements = List<XmlElement>();
 
   for (var element in parsedDoc.findAllElements("entry")) {
     elements.add(element);

@@ -46,6 +46,7 @@ class DictionaryEntryInfoDialog extends StatelessWidget {
           child: Text(
             entry.hiraganaWord,
             style: Theme.of(context).textTheme.subhead,
+            textAlign: TextAlign.center,
           )
       ));
     }
