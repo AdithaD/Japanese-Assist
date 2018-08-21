@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:japanese_assist/main.dart';
 import 'package:xml/xml.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async';
@@ -7,9 +8,10 @@ import 'search_page.dart';
 
 Future<List<DictionaryEntry>> fetchDictionaryEntriesIntoDOM() async {
   final String dictionaryXmlString =
-      await rootBundle.loadString("assets/xml/JMdict_e.xml");
+      await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH);
 
-  return compute(parseDictionaryEntriesFromDOM, prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));
+  return compute(parseDictionaryEntriesFromDOM,
+      prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));
   /*return parseDictionaryEntriesFromDOM(
       prepareXmlStringForEntries(dictionaryXmlString, 20000, 200));*/
 }
@@ -75,39 +77,39 @@ class DictionaryPageState extends State<DictionaryPage> {
         if (snapshot.hasError) print(snapshot.error);
 
         if (snapshot.hasData) {
-          return Column(
-            children: <Widget>[
-              Container(
-                color: Theme.of(context).highlightColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Icon(Icons.search),
-                      Expanded(
-                          child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: searchFieldController,
-                        ),
-                      )),
-                      RaisedButton(
-                        onPressed: () =>
-                            _startSearch(searchFieldController.text),
-                        child: Text("Search"),
-                        color: Theme.of(context).accentColor,
-                        textColor: Colors.white,
-                      )
-                    ],
+            return Column(
+              children: <Widget>[
+                Container(
+                  color: Theme.of(context).highlightColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Icon(Icons.search),
+                        Expanded(
+                            child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: searchFieldController,
+                          ),
+                        )),
+                        RaisedButton(
+                          onPressed: () =>
+                              _startSearch(searchFieldController.text),
+                          child: Text("Search"),
+                          color: Theme.of(context).accentColor,
+                          textColor: Colors.white,
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: DictionaryEntryList(entries: snapshot.data),
-              ),
-            ],
-          );
+                Expanded(
+                  child: DictionaryEntryList(entries: snapshot.data),
+                ),
+              ],
+            );
         } else {
           return Center(child: CircularProgressIndicator());
         }
@@ -154,19 +156,32 @@ class DictionaryEntryInfoDialog extends StatelessWidget {
     return SimpleDialog(
       contentPadding: EdgeInsets.all(8.0),
       children: <Widget>[
-        Align(alignment: Alignment.center, child: Text(entry.japaneseWord, style: Theme.of(context).textTheme.headline,)),
-        SizedBox(height: 16.0,),
+        Align(
+            alignment: Alignment.center,
+            child: Text(
+              entry.getJapaneseWord(),
+              style: Theme.of(context).textTheme.headline,
+            )),
+        SizedBox(
+          height: 16.0,
+        ),
         _getTranslationsWidget()
       ],
     );
   }
 
-  Widget _getTranslationsWidget(){
+  Widget _getTranslationsWidget() {
     List<Widget> textWidgets = new List<Widget>();
 
-    for (var string in entry.englishTranslations){
-      textWidgets.add(Text(string, textAlign: TextAlign.center,));
-      textWidgets.add(Divider());
+    for (var i = 0; i < entry.englishTranslations.length; i++) {
+      textWidgets.add(Text(
+        entry.englishTranslations[i],
+        textAlign: TextAlign.center,
+      ));
+
+      if (i != entry.englishTranslations.length - 1) {
+        textWidgets.add(Divider());
+      }
     }
 
     return Column(
@@ -184,10 +199,15 @@ class DictionaryEntryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        title: Text(entry.japaneseWord),
+        title: Text(entry.getJapaneseWord()),
         subtitle: Text(entry.englishTranslations.first),
-        onTap: (){
-          showDialog(context: context, barrierDismissible: true, builder: (context) => DictionaryEntryInfoDialog(entry: entry,));
+        onTap: () {
+          showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: (context) => DictionaryEntryInfoDialog(
+                    entry: entry,
+                  ));
         },
       ),
     );
@@ -195,25 +215,39 @@ class DictionaryEntryWidget extends StatelessWidget {
 }
 
 class DictionaryEntry {
-  final String japaneseWord;
+  final String kanjiWord;
+  final String hiraganaWord;
   final List<String> englishTranslations;
 
-  DictionaryEntry({this.japaneseWord, this.englishTranslations});
+  DictionaryEntry(
+      {this.kanjiWord, this.hiraganaWord, this.englishTranslations});
 
   factory DictionaryEntry.fromXml(XmlElement element) {
-    String japaneseWord;
-    if (element.findAllElements("keb").length == 0) {
-      japaneseWord = element.findAllElements("reb").first.text;
-    } else {
-      japaneseWord = element.findAllElements("keb").first.text;
+    String kanjiWord;
+    if (element.findAllElements("keb").length != 0) {
+      kanjiWord = element.findAllElements("keb").first.text;
+    }
+
+    String hiraganaWord;
+    if (element.findAllElements("reb").length != 0) {
+      hiraganaWord = element.findAllElements("reb").first.text;
     }
 
     return DictionaryEntry(
-      japaneseWord: japaneseWord,
+      kanjiWord: kanjiWord,
+      hiraganaWord: hiraganaWord,
       englishTranslations:
           element.findAllElements("gloss").map<String>((element) {
         return element.text;
       }).toList(),
     );
+  }
+
+  String getJapaneseWord() {
+    if (kanjiWord == null || kanjiWord == "") {
+      return hiraganaWord;
+    } else {
+      return kanjiWord;
+    }
   }
 }

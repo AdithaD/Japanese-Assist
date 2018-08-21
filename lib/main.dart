@@ -4,7 +4,8 @@ import 'dictionary_page.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  static const NAME = "Japanese Assist";
+  static const String NAME = "Japanese Assist";
+  static const String DICTIONARY_FILE_PATH = "assets/xml/JMdict_e.xml";
 
   // This widget is the root of your application.
   @override
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-          primarySwatch: Colors.red,
-          canvasColor: Colors.white,
-          cardColor: Color.fromRGBO(255, 172, 163, 90.0)),
+        primarySwatch: Colors.red,
+        canvasColor: Colors.white,
+        cardColor: Colors.white,
+      ),
       home: new Scaffold(
         appBar: AppBar(title: new Text(MyApp.NAME)),
         body: new DictionaryPage(),

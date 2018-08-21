@@ -13,75 +13,78 @@ Future<List<DictionaryEntry>> fetchSearchEntriesIntoDOM(
       SearchQuery(
           searchTerm: searchTerm,
           dictionaryXmlString:
-              await rootBundle.loadString("assets/xml/JMdict_e.xml"),
+              await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
           amount: amount));
+
+  /*return createSearchEntries(SearchQuery(
+      searchTerm: searchTerm,
+      dictionaryXmlString:
+      await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
+      amount: amount));*/
 }
-
 List<DictionaryEntry> createSearchEntries(SearchQuery query) {
-  StringBuffer trimmedXmlString = new StringBuffer("<JMDict>");
+  final String regex = r"(?:^|\W)" + query.searchTerm + r"(?:$|\W)";
 
-  int currentIndex = 0;
+  if (query.dictionaryXmlString
+          .indexOf(RegExp(regex, caseSensitive: false), 0) ==
+      -1) {
+    return List<DictionaryEntry>();
+  } else {
+    int currentIndex = 0;
+    int currentEntry = 0;
 
-  int currentEntry = 0;
+    List<XmlElement> entries = new List<XmlElement>();
 
-  List<XmlElement> entries = new List<XmlElement>();
+    while (currentEntry < query.amount) {
+      int searchFoundIndex = query.dictionaryXmlString
+          .indexOf(RegExp(regex, caseSensitive: false), currentIndex);
 
-  String regex = r"(?:^|\W)" + query.searchTerm + r"(?:$|\W)";
+      int start =
+          query.dictionaryXmlString.lastIndexOf("<entry>", searchFoundIndex);
 
-  while (currentEntry < query.amount) {
-    int searchFoundIndex = query.dictionaryXmlString
-        .indexOf(RegExp(regex, caseSensitive: false), currentIndex);
-    int start =
-        query.dictionaryXmlString.lastIndexOf("<entry>", searchFoundIndex);
+      int end = query.dictionaryXmlString.indexOf("</entry>", searchFoundIndex);
 
-    int end = query.dictionaryXmlString.indexOf("</entry>", searchFoundIndex);
+      if (end > start) {
+        String xmlEntry =
+            query.dictionaryXmlString.substring(start, end + "</entry>".length);
 
-    if (end > start) {
-      String xmlEntry =
-          query.dictionaryXmlString.substring(start, end + "</entry>".length);
+        XmlElement entryElement = parse(xmlEntry).rootElement;
 
-      XmlElement entryElement = parse(xmlEntry).rootElement;
+        bool inJapaneseWord;
+        if (entryElement.findAllElements("keb").length != 0) {
+          inJapaneseWord = entryElement
+              .findAllElements("keb")
+              .first
+              .text
+              .contains(query.searchTerm);
+        } else {
+          inJapaneseWord = entryElement
+              .findAllElements("reb")
+              .first
+              .text
+              .contains(query.searchTerm);
+        }
+        bool inEnglishTranslation;
 
-      bool inJapaneseWord;
-      if (entryElement.findAllElements("keb").length == 0) {
-        inJapaneseWord = entryElement
-            .findAllElements("reb")
-            .first
-            .text
-            .contains(query.searchTerm);
-      } else {
+        for (var englishTranslation in entryElement.findAllElements("gloss")) {
+          if (englishTranslation.text.contains(query.searchTerm)) {
+            inEnglishTranslation = true;
+            break;
+          }
+        }
+        if (inJapaneseWord || inEnglishTranslation) {
+          entries.add(entryElement);
 
-        inJapaneseWord = entryElement
-            .findAllElements("keb")
-            .first
-            .text
-            .contains(query.searchTerm);
-      }
-      bool inEnglishTranslation;
-
-      for (var englishTranslation in entryElement.findAllElements("gloss")){
-        if (englishTranslation.text.contains(query.searchTerm)) {
-          inEnglishTranslation = true;
-          break;
+          currentEntry++;
         }
       }
 
-
-      if (inJapaneseWord || inEnglishTranslation) {
-        trimmedXmlString.write(query.dictionaryXmlString
-            .substring(start, end + "</entry>".length));
-        entries.add(entryElement);
-
-        currentEntry++;
-      }
+      currentIndex = end + "</entry>".length;
     }
-
-    currentIndex = end + "</entry>".length;
+    return entries
+        .map<DictionaryEntry>((element) => DictionaryEntry.fromXml(element))
+        .toList();
   }
-
-  return entries
-      .map<DictionaryEntry>((element) => DictionaryEntry.fromXml(element))
-      .toList();
 }
 
 class DictionarySearchPage extends StatelessWidget {
@@ -99,7 +102,22 @@ class DictionarySearchPage extends StatelessWidget {
             if (snapshot.hasError) print(snapshot.error);
 
             if (snapshot.hasData)
-              return DictionaryEntryList(entries: snapshot.data);
+              if(snapshot.data.length != 0) {
+                return DictionaryEntryList(entries: snapshot.data);
+              }else{
+                return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Icon(Icons.error, size: 100.0,),
+                        Text(
+                          "We couldn't find anything for that search! Try again",
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.subhead,
+                        ),
+                      ],
+                    ));
+              }
             else {
               return Center(child: CircularProgressIndicator());
             }
