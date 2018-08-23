@@ -5,11 +5,11 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13659d8b-06a4-4f77-bb02-14ddb12a440d" name="Default" comment="Added a refresh button for random entries&#10;Added global key to the dictionary list.">
+    <list default="true" id="13659d8b-06a4-4f77-bb02-14ddb12a440d" name="Default" comment="Added fix for words with less than set amount of entries would crash">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dictionary/dictionary_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/xml/JMdict_e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/assets/xml/JMdict_e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/dictionary/search_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/search_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/dictionary/search_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/dictionary/search_dialog.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -25,42 +25,42 @@
     <session id="-507609856">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.24" value="2" />
-          <entry key="project.open.time.25" value="1" />
+          <entry key="project.open.time.25" value="2" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dart" value="4426" />
-          <entry key="txt" value="437" />
+          <entry key="dart" value="5568" />
+          <entry key="txt" value="523" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Dart" value="4426" />
-          <entry key="PLAIN_TEXT" value="437" />
+          <entry key="Dart" value="5568" />
+          <entry key="PLAIN_TEXT" value="523" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="dart" value="39" />
+          <entry key="dart" value="48" />
           <entry key="java" value="1" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Dart" value="39" />
+          <entry key="Dart" value="48" />
           <entry key="JAVA" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -75,39 +75,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="47" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="779">
+              <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="e#901#1458#0" />
-                <element signature="e#1548#2173#0" />
-                <element signature="e#2260#2564#0" />
+                <element signature="e#0#25#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/dictionary/search_page.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-                <element signature="n#!!block;n#SearchQuery#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="mock:///libstring_patch.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="341" selection-start-line="341" selection-end-line="341" />
             </state>
           </provider>
         </entry>
@@ -116,18 +91,9 @@
         <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="21" selection-start-column="21" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_page.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding>
-                <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -179,11 +145,11 @@
         <option value="$PROJECT_DIR$/lib/dictionary/dictionary_entry.dart" />
         <option value="$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart" />
         <option value="$PROJECT_DIR$/lib/dictionary/home_page.dart" />
-        <option value="$PROJECT_DIR$/lib/dictionary/search_dialog.dart" />
         <option value="$PROJECT_DIR$/lib/main.dart" />
-        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart" />
         <option value="$PROJECT_DIR$/lib/dictionary/dictionary_page.dart" />
         <option value="$PROJECT_DIR$/lib/dictionary/search_page.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/search_dialog.dart" />
+        <option value="$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart" />
       </list>
     </option>
   </component>
@@ -194,9 +160,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="951" />
+    <option name="width" value="978" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -208,7 +174,7 @@
   <component name="PropertiesComponent">
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534982923575" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1535014112719" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -216,7 +182,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="Images" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -363,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534856007729</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added fix for words with less than set amount of entries would crash">
+      <created>1534983184830</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1534983184830</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -390,8 +363,8 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299566" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3277311" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4986979" weight="0.40056023" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32719547" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.4986979" visible="true" weight="0.41036415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32913166" />
@@ -455,9 +428,20 @@
     <MESSAGE value="Add subline for hiragana on words with kanji&#10;fixed critical error with searching boolean values being null" />
     <MESSAGE value="Created a dialog for searching&#10;Removed search bar&#10;Refactored classes" />
     <MESSAGE value="Added a refresh button for random entries&#10;Added global key to the dictionary list." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a refresh button for random entries&#10;Added global key to the dictionary list." />
+    <MESSAGE value="Added fix for words with less than set amount of entries would crash" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added fix for words with less than set amount of entries would crash" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <default-breakpoints>
+        <breakpoint type="dart-exception">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="FlutterRunConfigurationType">
         <watch expression="searchFoundIndex" />
@@ -620,13 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list_tile.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-23">
@@ -644,23 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary/search_dialog.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_page.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/xml/JMdict_e.xml">
       <provider selected="true" editor-type-id="LargeFileEditor">
         <state relative-caret-position="146">
@@ -668,33 +628,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart">
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        <state relative-caret-position="230">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart">
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_info_dialog.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#901#1458#0" />
-            <element signature="e#1548#2173#0" />
-            <element signature="e#2260#2564#0" />
-          </folding>
+        <state relative-caret-position="339">
+          <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/search_dialog.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="83" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="83" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/dictionary/search_page.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+        <state relative-caret-position="525">
+          <caret line="26" column="68" selection-start-line="26" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_widget.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
           <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="n#!!block;n#SearchQuery#0" />
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/dictionary/dictionary_entry_list.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
