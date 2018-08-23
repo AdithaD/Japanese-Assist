@@ -19,9 +19,10 @@ Future<List<DictionaryEntry>> fetchSearchEntriesIntoDOM(
   return createSearchEntries(SearchQuery(
       searchTerm: searchTerm,
       dictionaryXmlString:
-      await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
+          await rootBundle.loadString(MyApp.DICTIONARY_FILE_PATH),
       amount: amount));
 }
+
 List<DictionaryEntry> createSearchEntries(SearchQuery query) {
   final String regex = r"(?:^|\W)" + query.searchTerm + r"(?:$|\W)";
 
@@ -39,48 +40,54 @@ List<DictionaryEntry> createSearchEntries(SearchQuery query) {
       int searchFoundIndex = query.dictionaryXmlString
           .indexOf(RegExp(regex, caseSensitive: false), currentIndex);
 
-      int start =
-          query.dictionaryXmlString.lastIndexOf("<entry>", searchFoundIndex);
+      if (searchFoundIndex != -1) {
+        int start =
+            query.dictionaryXmlString.lastIndexOf("<entry>", searchFoundIndex);
 
-      int end = query.dictionaryXmlString.indexOf("</entry>", searchFoundIndex);
+        int end =
+            query.dictionaryXmlString.indexOf("</entry>", searchFoundIndex);
 
-      if (end > start) {
-        String xmlEntry =
-            query.dictionaryXmlString.substring(start, end + "</entry>".length);
+        if (end > start) {
+          String xmlEntry = query.dictionaryXmlString
+              .substring(start, end + "</entry>".length);
 
-        XmlElement entryElement = parse(xmlEntry).rootElement;
+          XmlElement entryElement = parse(xmlEntry).rootElement;
 
-        bool inJapaneseWord = false;
-        if (entryElement.findAllElements("keb").length != 0) {
-          inJapaneseWord = entryElement
-              .findAllElements("keb")
-              .first
-              .text
-              .contains(query.searchTerm);
-        } else {
-          inJapaneseWord = entryElement
-              .findAllElements("reb")
-              .first
-              .text
-              .contains(query.searchTerm);
-        }
-        bool inEnglishTranslation = false;
+          bool inJapaneseWord = false;
+          if (entryElement.findAllElements("keb").length != 0) {
+            inJapaneseWord = entryElement
+                .findAllElements("keb")
+                .first
+                .text
+                .contains(query.searchTerm);
+          } else {
+            inJapaneseWord = entryElement
+                .findAllElements("reb")
+                .first
+                .text
+                .contains(query.searchTerm);
+          }
+          bool inEnglishTranslation = false;
 
-        for (var englishTranslation in entryElement.findAllElements("gloss")) {
-          if (englishTranslation.text.contains(query.searchTerm)) {
-            inEnglishTranslation = true;
-            break;
+          for (var englishTranslation
+              in entryElement.findAllElements("gloss")) {
+            if (englishTranslation.text.contains(query.searchTerm)) {
+              inEnglishTranslation = true;
+              break;
+            }
+          }
+          if (inJapaneseWord || inEnglishTranslation) {
+            entries.add(entryElement);
+
+            currentEntry++;
           }
         }
-        if (inJapaneseWord || inEnglishTranslation) {
-          entries.add(entryElement);
-
-          currentEntry++;
-        }
+        currentIndex = end + "</entry>".length;
+      }else{
+        currentEntry++;
       }
-
-      currentIndex = end + "</entry>".length;
     }
+
     return entries
         .map<DictionaryEntry>((element) => DictionaryEntry.fromXml(element))
         .toList();
@@ -101,23 +108,26 @@ class DictionarySearchPage extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasError) print(snapshot.error);
 
-            if (snapshot.hasData)
-              if(snapshot.data.length != 0) {
-                return DictionaryEntryList(entries: snapshot.data);
-              }else{
-                return Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.error, size: 100.0, color: Theme.of(context).primaryColor,),
-                        Text(
-                          "We couldn't find anything for that search! Try again",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.subhead,
-                        ),
-                      ],
-                    ));
-              }
+            if (snapshot.hasData) if (snapshot.data.length != 0) {
+              return DictionaryEntryList(entries: snapshot.data);
+            } else {
+              return Center(
+                  child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(
+                    Icons.error,
+                    size: 100.0,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  Text(
+                    "We couldn't find anything for that search! Try again",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.subhead,
+                  ),
+                ],
+              ));
+            }
             else {
               return Center(child: CircularProgressIndicator());
             }

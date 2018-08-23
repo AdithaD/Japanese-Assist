@@ -85,9 +85,6 @@ List<DictionaryEntry> parseDictionaryEntriesFromDOM(
 }
 
 class DictionaryWidget extends StatefulWidget {
-
-  const DictionaryWidget({Key key}):super(key: key);
-
   createState() => new DictionaryWidgetState();
 }
 

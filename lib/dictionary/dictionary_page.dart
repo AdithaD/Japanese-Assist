@@ -10,9 +10,9 @@ class DictionaryPage extends StatefulWidget {
 
 class DictionaryPageState extends State<DictionaryPage> {
 
-  GlobalKey<DictionaryWidgetState> dictionaryKey = new GlobalKey();
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: new Text(MyApp.NAME),
@@ -21,7 +21,7 @@ class DictionaryPageState extends State<DictionaryPage> {
           IconButton(icon: Icon(Icons.repeat), onPressed: _refreshEntries,)
         ],
       ),
-      body: DictionaryWidget(key: dictionaryKey,),
+      body: DictionaryWidget(),
     );
   }
 
@@ -35,7 +35,8 @@ class DictionaryPageState extends State<DictionaryPage> {
   }
   
   void _refreshEntries(){
-    dictionaryKey.currentState.setState((){});
+    this.
+    setState((){});
   }
 
   _createSearchRoute(String searchTerm) {
